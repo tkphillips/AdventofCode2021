@@ -24,6 +24,7 @@ int main () {
     for(int i = 0; i < input.size(); i++){
         fish[input.at(i)]++;
     }
+    
     while(day < 256){
         cpp_int temp = fish[8];
         cpp_int temp2;
