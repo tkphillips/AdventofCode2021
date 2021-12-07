@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main () {
@@ -21,7 +22,7 @@ int main () {
             max = input.at(i);
         };
     }
-    int min = 999999999;
+    int min = INT_MAX;
     for(int x = 0; x < 1914; x++){
         int fuel = 0;
         for(int i = 0; i < input.size(); i++){
