@@ -23,7 +23,6 @@ int main () {
             for(int k = 0; k <= abs(x - input.at(i)); k++){
                 fuel += k;
             }
-            
         }
         if(fuel < min){
             min = fuel;
