@@ -16,12 +16,6 @@ int main () {
         }
         myfile.close();
     }
-    int max = 0;
-    for(int i = 0; i < input.size(); i++){
-        if(input.at(i) > max){
-            max = input.at(i);
-        };
-    }
     int min = INT_MAX;
     for(int x = 0; x < 1914; x++){
         int fuel = 0;
