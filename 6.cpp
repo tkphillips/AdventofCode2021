@@ -48,7 +48,8 @@ int main () {
         sum += fish[i];
     }
     cout << sum << endl;
-            
+
+    //brute force 
     /*
     while(day < 256){
         int size = input.size();
