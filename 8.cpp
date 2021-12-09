@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <math.h>
 using namespace std;
 
 int main() {
@@ -151,14 +152,14 @@ int main() {
         //decode last 4
         int num[4] = {0};
         for(int n = 11; n < 15; n++){
-            int numSum = 0;
+            long numSum = 0;
             for(int v = 0; v < input[i][n].length(); v++){
-                numSum += input[i][n][v];
+                numSum += pow(input[i][n][v],7);
             }
             for(int f = 0; f < 10; f++){
-                int decodedSum = 0;
+                long decodedSum = 0;
                 for(int v = 0; v < decoded[f].length(); v++){
-                    decodedSum += decoded[f][v];
+                    decodedSum += pow(decoded[f][v],7);
                 }
                 if(numSum == decodedSum){
                     num[n-11] = f;
