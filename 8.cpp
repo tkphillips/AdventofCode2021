@@ -64,6 +64,22 @@ int main() {
                 n--;
             }
         }
+        //find one with six digits that includes all the four digits => 9
+        for(int n = 0; n < toDecode.size(); n++){
+            bool found = true;
+            if(toDecode[n].length() == 6){
+                for(int j = 0; j < 4; j++){
+                    if (toDecode[n].find(decoded[4][j]) == std::string::npos){
+                        found = false;
+                    }
+                }
+                if(found){
+                    decoded[9] = toDecode[n];
+                    toDecode.erase(toDecode.begin() + n);
+                    break;
+                } 
+            }
+        }
         //find one with six digits that includes all the one digits => 0
         for(int n = 0; n < toDecode.size(); n++){
             bool found = true;
@@ -80,30 +96,15 @@ int main() {
                 } 
             }
         }
-        //find one off from 8 => 6
-        for(int n = 0; n < toDecode.size(); n++){
-            int notFoundCount = 0;
-            if(toDecode[n].length() == 6){
-                for(int j = 0; j < 7; j++){
-                    if (toDecode[n].find(decoded[8][j]) == std::string::npos){
-                        notFoundCount++;
-                    }
-                }
-                if(notFoundCount == 1){
-                    decoded[6] = toDecode[n];
-                    toDecode.erase(toDecode.begin() + n);
-                    break;
-                } 
-            }
-        }
-        //find the other with six digits => 9
+        //last size 6
         for(int n = 0; n < toDecode.size(); n++){
             if(toDecode[n].length() == 6){
-                decoded[9] = toDecode[n];
+                decoded[6] = toDecode[n];
                 toDecode.erase(toDecode.begin() + n);
                 break;
             }
         }
+
         //find one with five digits and all of 1 => 3
         for(int n = 0; n < toDecode.size(); n++){
             bool found = true;
@@ -120,24 +121,25 @@ int main() {
                 } 
             }
         }
-        //find one with five digits with only one segment differnent from 3 => 2
+        //find one with five digits with only one segment differnent from 6 => 5
         for(int n = 0; n < toDecode.size(); n++){
             int notFoundCount = 0;
             if(toDecode[n].length() == 5){
-                for(int j = 0; j < 2; j++){
-                    if (toDecode[n].find(decoded[3][j]) == std::string::npos){
+                for(int j = 0; j < 6; j++){
+                    if (toDecode[n].find(decoded[6][j]) == std::string::npos){
                         notFoundCount++;
                     }
                 }
                 if(notFoundCount == 1){
-                    decoded[2] = toDecode[n];
+                    decoded[5] = toDecode[n];
                     toDecode.erase(toDecode.begin() + n);
                     break;
                 } 
             }
         }
-        //process of elimination => 5
-        decoded[5] = toDecode.at(0);
+        //process of elimination => 2
+        decoded[2] = toDecode.at(0);
+        //cout << toDecode.size() << endl;
         toDecode.erase(toDecode.begin());
 
         for(int g = 0; g < 10; g++){
@@ -162,7 +164,7 @@ int main() {
             }
         }
         int number = num[3] + (10 * num[2]) + (100 * num[1]) + (1000 * num[0]);
-        cout << number << endl;
+        cout << i + 1 << ": " << number << endl;
         sum += number;
     }
     cout << sum << endl;
