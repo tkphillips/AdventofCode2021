@@ -163,7 +163,8 @@ int main() {
                 }
             }
         }
-        int number = num[3] + (10 * num[2]) + (100 * num[1]) + (1000 * num[0]);
+        int number;
+        number = num[3] + (10 * num[2]) + (100 * num[1]) + (1000 * num[0]);
         cout << i + 1 << ": " << number << endl;
         sum += number;
     }
