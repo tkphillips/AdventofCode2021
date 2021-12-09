@@ -34,10 +34,10 @@ int main() {
     }
     cout << count << endl;
     //part 2
-    int sum = 0;
+    long sum = 0;
+    vector<string> toDecode;
     for(int i = 0; i < 200; i++){
-        string decoded[10] = {""};
-        vector<string> toDecode;
+        string decoded[10] = {""}; 
         for(int j = 0; j < 10; j++){
             toDecode.push_back(input[i][j]);
         }
@@ -105,12 +105,12 @@ int main() {
             }
         }
 
-        //find one with five digits and all of 1 => 3
+        //find one with five digits and all of 7 => 3
         for(int n = 0; n < toDecode.size(); n++){
             bool found = true;
             if(toDecode[n].length() == 5){
-                for(int j = 0; j < 2; j++){
-                    if (toDecode[n].find(decoded[1][j]) == std::string::npos){
+                for(int j = 0; j < 3; j++){
+                    if (toDecode[n].find(decoded[7][j]) == std::string::npos){
                         found = false;
                     }
                 }
@@ -137,14 +137,17 @@ int main() {
                 } 
             }
         }
-        //process of elimination => 2
-        decoded[2] = toDecode.at(0);
-        //cout << toDecode.size() << endl;
-        toDecode.erase(toDecode.begin());
-
-        for(int g = 0; g < 10; g++){
-            cout << g << ": " << decoded[g] << endl;
+        if(toDecode[0].length() == 5){
+            //process of elimination => 2
+            decoded[2] = toDecode.at(0);
+            //cout << toDecode.size() << endl;
+            toDecode.erase(toDecode.begin());
+        }else{
+            cout << "what" << endl;
         }
+        /*for(int g = 0; g < 10; g++){
+            cout << g << ": " << decoded[g] << endl;
+        }*/
         //decode last 4
         int num[4] = {0};
         for(int n = 11; n < 15; n++){
@@ -167,6 +170,7 @@ int main() {
         number = num[3] + (10 * num[2]) + (100 * num[1]) + (1000 * num[0]);
         cout << i + 1 << ": " << number << endl;
         sum += number;
+        
     }
     cout << sum << endl;
     return 0;
