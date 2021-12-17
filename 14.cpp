@@ -40,19 +40,17 @@ int main() {
     //scan string and see what to insert where
     //scan original, insert in temp, original - temp;
     //do it 10 times
-    for(int i = 0; i < 1; i++){
+    for(int i = 0; i < 10; i++){
         //iterate through string
         string temp = chain;
+        int insertCount = 1;
         for(int j = 0; j < chain.length() - 1; j++){
-            int insertCount = 1;
             string pair = chain.substr(j,2);
             for(int k = 0; k < input.size(); k++){
                 //this isnt working
                 if(pair == input.at(k).find){
-                    cout << temp << " -> ";
                     temp.insert(j + insertCount, input.at(k).insert);
-                    cout << temp << endl;
-                    insertCount+=2;
+                    insertCount++;
                     break;
                 }
             }
@@ -60,7 +58,7 @@ int main() {
         chain = temp;
     }
     //create frequency array;
-    int letterCount[26];
+    long letterCount[26];
     for(int i = 0; i < 26; i++){
         letterCount[i] = 0;
     }
@@ -68,8 +66,8 @@ int main() {
         letterCount[chain[i] - 65]++;
     }
     //find max and min values
-    int max = 0;
-    int min = INT_MAX;
+    long max = 0;
+    long min = LONG_MAX;
     for(int i = 0; i < 26; i++){
         if(letterCount[i] > max){
             max = letterCount[i];
