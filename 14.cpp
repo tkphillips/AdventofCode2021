@@ -12,7 +12,43 @@ struct step{
 };
 
 int main() {
-    ifstream myfile;
+    ifstream mystruct lowP{
+    int x;
+    int y;
+};
+
+int field[100][100] = {0};
+bool counted[100][100];
+
+bool inBounds(int x, int y){
+    if(x > 99 || x < 0 || y > 99 || y < 0){
+        return false;
+    }
+    return true;
+}
+
+int sizeBasin(int x, int y){
+    int size = 0;
+    if(field[x][y] == 9){
+        counted[x][y] = true;
+        return size;
+    }
+    size++;
+    counted[x][y] = true;
+    if(inBounds(x-1,y) && !counted[x-1][y]){
+        size += sizeBasin(x-1, y);
+    }
+    if(inBounds(x+1,y) && !counted[x+1][y]){
+        size += sizeBasin(x+1, y);
+    }
+    if(inBounds(x,y+1) && !counted[x][y+1]){
+        size += sizeBasin(x, y+1);
+    }
+    if(inBounds(x,y-1) && !counted[x][y-1]){
+        size += sizeBasin(x, y-1);
+    }
+    return size;
+}file;
     vector<step> input;
     string chain;
     string line;

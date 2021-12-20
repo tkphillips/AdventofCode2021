@@ -96,6 +96,8 @@ int main() {
         }
         cout << endl;
     }
+    //traverse all combinations
+    int vistited[13];
     //find # of paths start->finish, can only visit lower case caves
     
     return 0;
